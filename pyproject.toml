@@ -6,6 +6,8 @@ authors = ["Mohan Dhar <mohan@albert.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+gunicorn = "^20.1.0"
+django-heroku = "^0.3.1"
 
 [tool.poetry.dev-dependencies]
 
