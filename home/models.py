@@ -35,8 +35,26 @@ class Attendance(models.Model):
 class Education(models.Model):
     person = models.ForeignKey(Person, on_delete=models.CASCADE)
     school_name = models.CharField(max_length=50)
-    location = models.ForeignKey(Location, on_delete=models.RESTRICT)
-    attendance = models.ForeignKey(Attendance, on_delete=models.RESTRICT)
+    location = models.ForeignKey(
+        Location, on_delete=models.RESTRICT, default=None)
+    attendance = models.ForeignKey(
+        Attendance, on_delete=models.RESTRICT, default=None)
     degree = models.CharField(max_length=50)
     major = models.CharField(max_length=50)
     gpa = models.DecimalField(max_digits=3, decimal_places=2)
+
+
+class Experience(models.Model):
+    person = models.ForeignKey(Person, on_delete=models.CASCADE)
+    company = models.CharField(max_length=50)
+    title = models.CharField(max_length=50)
+    location = models.ForeignKey(
+        Location, on_delete=models.RESTRICT, default=None)
+    attendance = models.ForeignKey(
+        Attendance, on_delete=models.RESTRICT, default=None)
+    summary = models.CharField(max_length=600)
+
+
+class Accomplishment(models.Model):
+    detail = models.CharField(max_length=300)
+    experience = models.ForeignKey(Experience, on_delete=models.CASCADE)
