@@ -37,6 +37,9 @@ class Attendance(models.Model):
                 fields=['start_date', 'end_date'], name='unique_attendance')
         ]
 
+    def __str__(self):
+        return f'{self.start_date} - {self.end_date}'
+
 
 class Education(models.Model):
     person = models.ForeignKey(Person, on_delete=models.CASCADE)
@@ -49,6 +52,9 @@ class Education(models.Model):
     major = models.CharField(max_length=50)
     gpa = models.DecimalField(max_digits=3, decimal_places=2)
 
+    def __str__(self):
+        return f'{self.school_name}'
+
 
 class Experience(models.Model):
     person = models.ForeignKey(Person, on_delete=models.CASCADE)
@@ -60,7 +66,13 @@ class Experience(models.Model):
         Attendance, on_delete=models.RESTRICT, default=None)
     summary = models.CharField(max_length=600)
 
+    def __str__(self):
+        return f'{self.company}'
+
 
 class Accomplishment(models.Model):
     detail = models.CharField(max_length=300)
     experience = models.ForeignKey(Experience, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.detail}'
