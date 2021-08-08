@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  {% block title %}<title>Mohan's Title</title>{% endblock %}
-</head>
-<body>
-  {% block sidebar %}<!-- insert default navigation text for every page -->{% endblock %}
-  {% block content %}<!-- default content text (typically empty) -->{% endblock %}
-</body>
+  <head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <meta name="description" content="Description">
+    <meta name="author" content="Author">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- FONT -->
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+    <!-- CSS -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'home/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'home/skeleton.css' %}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'favicon.ico' %}">
+  </head>
+  <body>
+    {% block content %}<!-- default content text (typically empty) -->{% endblock %}
+  </body>
 </html>
