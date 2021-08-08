@@ -9,6 +9,9 @@ class Person(models.Model):
     phone_number = PhoneNumberField(unique=True, null=False, blank=False)
     description = models.CharField(max_length=256)
 
+    def __str__(self):
+        return f'{self.first_name}, {self.last_name}'
+
 
 class Location(models.Model):
     city = models.CharField(max_length=50)
@@ -19,6 +22,9 @@ class Location(models.Model):
             models.UniqueConstraint(
                 fields=['city', 'state'], name='unique_location')
         ]
+
+    def __str__(self):
+        return f'{self.city}, {self.state}'
 
 
 class Attendance(models.Model):
