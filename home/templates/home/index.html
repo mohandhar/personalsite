@@ -4,10 +4,25 @@
 <!-- Primary Page Layout -->
 <div class="container">
   <div class="row">
-    <div class="one-half column" style="margin-top: 25%">
+    <div class="one-third column" style="margin-top: 20%">
       <h1>{{ person.first_name }} {{ person.last_name }}</h1>
-      <h4>{{ person.description }}</h4>
+      <h6>{{ person.description }}</h6>
     </div>
   </div>
+
+
+  <!-- Display Experience -->
+  <div class="row">
+    <div class="one-half column" style="margin-top: 10%">
+      {% for experience in person.experience_set.all %}
+      <h4>{{ experience.company }}</h4>
+      <p>{{ experience.title }}</p>
+      {% for accomplishment in experience.accomplishment_set.all %}
+      <p>{{accomplishment.detail}}</p>
+      {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+
 </div>
 {% endblock %}
