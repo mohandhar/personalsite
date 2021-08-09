@@ -22,9 +22,11 @@
       <p style="margin-top: -5%">
 	<em>{{ experience.summary }}</em>
       </p>
-      {% for accomplishment in experience.accomplishment_set.all %}
-      <p>{{accomplishment.detail}}</p>
-      {% endfor %}
+      <ul>
+	{% for accomplishment in experience.accomplishment_set.all %}
+	<li>{{accomplishment.detail}}</li>
+	{% endfor %}
+      </ul>
       {% endfor %}
     </div>
   </div>
