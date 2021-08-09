@@ -13,10 +13,15 @@
 
   <!-- Display Experience -->
   <div class="row">
-    <div class="one-half column" style="margin-top: 10%">
+    <div class="one-half column" style="margin-top: 7.5%">
       {% for experience in person.experience_set.all %}
       <h4>{{ experience.company }}</h4>
-      <p>{{ experience.title }}</p>
+      <p style="margin-top: -4%">
+	<strong>{{ experience.title }}</strong>
+      </p>
+      <p style="margin-top: -5%">
+	<em>{{ experience.summary }}</em>
+      </p>
       {% for accomplishment in experience.accomplishment_set.all %}
       <p>{{accomplishment.detail}}</p>
       {% endfor %}
