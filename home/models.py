@@ -66,6 +66,9 @@ class Experience(models.Model):
         Attendance, on_delete=models.RESTRICT, default=None)
     summary = models.CharField(max_length=600)
 
+    class Meta:
+        ordering = ['-id']
+
     def __str__(self):
         return f'{self.company}'
 
