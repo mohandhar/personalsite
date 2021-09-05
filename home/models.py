@@ -67,7 +67,7 @@ class Experience(models.Model):
     summary = models.CharField(max_length=600)
 
     class Meta:
-        ordering = ['-id']
+        ordering = ['-attendance__start_date']
 
     def __str__(self):
         return f'{self.company}'
