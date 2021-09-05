@@ -3,33 +3,81 @@
 {% block content %}
 <!-- Primary Page Layout -->
 <div class="container">
+
+  <!-- Display Name and Description -->
   <div class="row">
-    <div class="one-half column" style="margin-top: 20%">
+    <div class="eight columns offset-by-two" style="margin-top:10%">
       <h1>{{ person.first_name }} {{ person.last_name }}</h1>
       <h6>{{ person.description }}</h6>
     </div>
   </div>
 
-
   <!-- Display Experience -->
-  <div class="row">
-    <div class="one-half column">
-      {% for experience in person.experience_set.all %}
-      <h4>{{ experience.company }}</h4>
-      <p style="margin-top: -4%">
-	<strong>{{ experience.title }}</strong>
-      </p>
-      <p style="margin-top: -5%">
-	<em>{{ experience.summary }}</em>
-      </p>
-      <ul>
-	{% for accomplishment in experience.accomplishment_set.all %}
-	<li>{{accomplishment.detail}}</li>
-	{% endfor %}
-      </ul>
-      {% endfor %}
+  {% for experience in person.experience_set.all %}
+  <div class="row" style="margin-top:5%">
+    <!-- Experience header -->
+    {% if forloop.first %}
+    <div class="eight columns offset-by-two">
+      <h3>Experience</h3>
+    </div>
+    {% endif %}
+
+    <!-- Company information -->
+    <div class="four columns offset-by-two">
+      <strong>{{ experience.company }}</strong>
+    </div>
+    <div class="four columns offset-by-two">
+      {{ experience.location }}
     </div>
   </div>
+  <div class="row">
+    <div class="four columns offset-by-two">
+      {{ experience.title }}
+    </div>
+    <div class="four columns offset-by-two">
+      {{ experience.attendance }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="eight columns offset-by-two">
+      <h6>{{ experience.summary }}</h6>
+    </div>
+
+
+    <div class="eight columns offset-by-two">
+      <ul>
+	{% for accomplishment in experience.accomplishment_set.all %}
+	<li>{{ accomplishment.detail }}</li>
+	{% endfor %}
+      </ul>
+    </div>
+  </div>
+  {% endfor %}
+
+  <!-- Display Education -->
+  {% for education in person.education_set.all %}
+  <div class="row" style="margin-top:5%">
+    {% if forloop.first %}
+    <div class="eight columns offset-by-two">
+      <h3>Education</h3>
+    </div>
+    {% endif %}
+    <div class="four columns offset-by-two">
+      {{ education.school_name }}
+    </div>
+    <div class="four columns offset-by-two">
+      {{ education.location }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="four columns offset-by-two">
+      {{ education.degree }} in {{ education.major }}, {{ education.gpa }} / 4.00
+    </div>
+    <div class="four columns offset-by-two">
+      {{ education.attendance }}
+    </div>
+  </div>
+  {% endfor %}
 
 </div>
 {% endblock %}

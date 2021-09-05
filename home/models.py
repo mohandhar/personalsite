@@ -38,7 +38,8 @@ class Attendance(models.Model):
         ]
 
     def __str__(self):
-        return f'{self.start_date} - {self.end_date}'
+        end_date = self.end_date or 'Present'
+        return f'{self.start_date} - {end_date}'
 
 
 class Education(models.Model):
