@@ -2,7 +2,7 @@
 name = "personalsite"
 version = "0.1.0"
 description = ""
-authors = ["Mohan Dhar <mohan@albert.com>"]
+authors = ["Mohan Dhar"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
